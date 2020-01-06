@@ -24,12 +24,14 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _FN,
+  _MOVE,
   _ADJUST,
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define FN MO(_FN)
+#define MOVE LT(_MOVE,KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -49,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    KC_LCTL, FN,      KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT
+    KC_LCTL, FN,      KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RGUI, KC_RALT, FN,      KC_RCTL
 ),
 
 /* Lower
@@ -64,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    _______, KC_TILD, _______, _______, KC_PIPE, KC_UNDS, _______, KC_PLUS, KC_LCBR, KC_RCBR, _______, _______,
-    _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_ASTR, KC_LPRN, KC_RPRN, _______, KC_DQT,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_ASTR, KC_UNDS, _______,  _______,  _______,
+    _______, KC_GRV,  KC_ASTR, KC_BSLS, KC_PIPE, KC_PLUS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_DQUO, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______
 ),
 
 /* Raise
@@ -82,10 +84,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
-    _______, KC_GRV, _______, _______,  KC_BSLS, KC_MINS, _______, KC_EQL,  KC_LBRC, KC_RBRC, _______, _______,
-    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_QUOT,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+    _______, KC_TILD, KC_LBRC, KC_LCBR, KC_LPRN, KC_EQUAL, KC_MINS, KC_RPRN, KC_RCBR, KC_RBRC, KC_QUOT, _______,
+    _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______
 ),
 
 /* Adjust (Lower + Raise)
@@ -104,6 +106,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, MU_MOD,  AU_ON,   AU_OFF,  _______, _______, _______, _______, _______, _______, _______,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+),
+
+[_MOVE] = LAYOUT_planck_grid(
+    _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_RIGHT, KC_DOWN, KC_UP,   KC_LEFT, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______
 ),
 
 [_FN] = LAYOUT_planck_grid(
